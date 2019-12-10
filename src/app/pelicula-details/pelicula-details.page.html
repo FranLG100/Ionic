@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{pelicula.titulo}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="full">
+    <ion-label>Titulo</ion-label>
+      <ion-item *ngIf="pelicula">
+        <ion-input required type="text" placeholder="Pelicula" [(ngModel)]="pelicula.titulo"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item *ngIf="pelicula.imagen">
+        <ion-img>
+          <img [src]="pelicula.imagen" width="100%"/>
+        </ion-img>
+      </ion-item>
+      <br>
+      <ion-label>Director</ion-label>
+      <ion-item *ngIf="pelicula">
+        <ion-input required type="text" placeholder="Pelicula" [(ngModel)]="pelicula.director"></ion-input>
+      </ion-item>
+      <br>
+      <br>
+      <ion-label>Año</ion-label>
+      <ion-item *ngIf="pelicula">
+        <ion-input required type="number" placeholder="Anho" [(ngModel)]="pelicula.anho"></ion-input>
+      </ion-item>
+      <br>
+      <br>
+      <ion-label>Genero</ion-label>
+      <ion-item *ngIf="pelicula">
+        <ion-input required type="text" placeholder="Pelicula" [(ngModel)]="pelicula.genero"></ion-input>
+      </ion-item>
+      <br>
+      <br>
+      <ion-label>Sinopsis</ion-label>
+      <ion-item *ngIf="pelicula">
+        <ion-input required type="text" placeholder="Sinopsis" [(ngModel)]="pelicula.sinopsis"></ion-input>
+      </ion-item>
+      <br>
+      <br>
+      <ion-label>Enlace Poster</ion-label>
+      <ion-item *ngIf="pelicula">
+        <ion-input required type="text" placeholder="Pelicula" [(ngModel)]="pelicula.imagen"></ion-input>
+      </ion-item>
+      
+  </ion-list>
+  <ion-button expand="full" (click)="savePelicula()">Guardar</ion-button>
+  <br>
+      <br>
+      <br>
+      <br>
+  <!--ion-fab vertical="bottom" horizontal="start" slot="fixed" color="primary">
+    <ion-fab-button routerLink="/menu" routerDirection="forward" color="primary" (click)="addFavoritos(peliculaId)">
+       <ion-icon name="star-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-->
+  <!--ion-fab vertical="bottom" horizontal="end" slot="fixed" color="danger">
+    <ion-fab-button (click)="onRemove(peliculaId)" routerLink="/menu" routerDirection="forward" color="danger">
+      <ion-icon name="trash"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-->
+</ion-content>

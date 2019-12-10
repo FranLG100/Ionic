@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Favoritos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let favorito of favoritos">
+      <ion-item lines="inset" button [routerLink]="['/favoritos',favorito.id]">
+        <ion-img slot="start">
+          <img [src]="favorito.imagen" width="100px"/>
+        </ion-img>
+        <ion-label>
+          {{favorito.titulo}}
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="onRemoveFav(favorito.id)" color="danger">
+          <ion-icon name="trash" slot="end"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button routerLink="/menu">
+      <ion-icon name="return-left"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

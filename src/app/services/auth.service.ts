@@ -7,23 +7,30 @@ import {User} from '../shared/user.class';
 })
 export class AuthService {
 
-  public isLogged : any=false;
+  //public isLogged : any=false;
   constructor(public afAuth: AngularFireAuth) { 
-    afAuth.authState.subscribe( user=>(this.isLogged=user));
+    //afAuth.authState.subscribe( user=>(this.isLogged=user));
   }
 
   //login
-  async onLogin(user:User){
+  onLogin(user:User){
+    return new Promise((resolve, rejected)=>{
+      this.afAuth.auth.signInWithEmailAndPassword(user.email,user.password).then(user=>{
+      resolve(user)
+    }).catch(err=>rejected(err) )})
+    
+    /*
     try{
-      return await this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
+      return await this.afAuth.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(()=>{return this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password)});
     }catch(error){
       console.log('Error en el login: ', error);
-    }
+    }*/
   }
 
   //registrarse
   async onRegister(user:User){
     try{
+
       return await this.afAuth.auth.createUserWithEmailAndPassword(
         user.email,
         user.password
@@ -32,4 +39,9 @@ export class AuthService {
       console.log('Error en el registro: ', error);
     }
   }
+
+  userDetails(){
+    return this.afAuth.auth.currentUser.email;
+  }
 }
+

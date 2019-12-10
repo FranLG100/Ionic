@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{favorito.titulo}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="full">
+    <ion-label>Titulo</ion-label>
+    <ion-text *ngIf="favorito">
+      <br>&emsp;{{favorito.titulo}}
+    </ion-text>
+      <br>
+      <br>
+      <ion-item *ngIf="favorito">
+        <ion-img>
+          <img [src]="favorito.imagen" width="100%"/>
+        </ion-img>
+      </ion-item>
+      <br>
+      <br>
+      <ion-label>Director</ion-label>
+      
+      <ion-text *ngIf="favorito">
+        <br>&emsp;{{favorito.director}}
+      </ion-text>
+<br>
+<br>
+      <ion-label>Año</ion-label>
+        <ion-text *ngIf="favorito">
+          <br>&emsp;{{favorito.anho}}
+        </ion-text>
+        <br>
+      <br>
+      <ion-label>Genero</ion-label>
+      <ion-text *ngIf="favorito">
+        <br>&emsp;{{favorito.genero}}
+      </ion-text>
+      <br>
+      <br>
+      <ion-label>Sinopsis</ion-label>
+      <ion-text *ngIf="favorito">
+        {{favorito.sinopsis}}
+      </ion-text>
+      
+  </ion-list>
+      <br>
+      <br>
+  <!--ion-fab vertical="bottom" horizontal="start" slot="fixed" color="primary">
+    <ion-fab-button (click)="onRemove(favoritoId)" routerLink="/favoritos" routerDirection="forward" color="danger">
+       <ion-icon name="star"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-->
+  <!--ion-fab vertical="bottom" horizontal="end" slot="fixed" color="danger">
+    <ion-fab-button (click)="onRemove(favoritoId)" routerLink="/favoritos" routerDirection="forward" color="danger">
+      <ion-icon name="trash"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-->
+</ion-content>

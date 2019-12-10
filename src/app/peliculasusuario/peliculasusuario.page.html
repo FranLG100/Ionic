@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{pelicula.titulo}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list lines="full">
+    <ion-label>Titulo</ion-label>
+    <ion-text *ngIf="pelicula">
+      <br><br>&emsp;{{pelicula.titulo}}
+    </ion-text>
+      <br>
+      <br>
+      <ion-item *ngIf="pelicula.imagen">
+        <ion-img>
+          <img [src]="pelicula.imagen" width="100%"/>
+        </ion-img>
+      </ion-item>
+      <br>
+      <ion-label>Director</ion-label>
+      <ion-text *ngIf="pelicula">
+        <br>&emsp;{{pelicula.director}}
+      </ion-text>
+        <br>
+        <br>
+      <ion-label>Año</ion-label>
+      <ion-text *ngIf="pelicula">
+        <br>&emsp;{{pelicula.anho}}
+      </ion-text>
+        <br>
+        <br>
+      <ion-label>Genero</ion-label>
+      <ion-text *ngIf="pelicula">
+        <br>&emsp;{{pelicula.genero}}
+      </ion-text>
+        <br>
+        <br>
+      <ion-label>Sinopsis</ion-label>
+      <ion-text *ngIf="pelicula">
+        <br>&emsp;{{pelicula.sinopsis}}
+      </ion-text>
+        <br>
+        <br>
+      
+  </ion-list>
+  
+      <br>
+      <br>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed" color="primary">
+    <ion-fab-button routerLink="/menu" routerDirection="forward" color="primary" (click)="addFavoritos(peliculaId)">
+       <ion-icon name="star-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

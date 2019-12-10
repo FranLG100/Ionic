@@ -13,6 +13,10 @@ export class HomePage {
   constructor(private authSvc:AuthService, private router:Router, private afAuth:AngularFireAuth) {
   }
 
+  ngOnInit() {
+    console.log(this.authSvc.userDetails());
+  }
+
   onLogout(){
     console.log('Logout');
     this.afAuth.auth.signOut();

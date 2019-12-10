@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar color="primary" mode="ios">
+    <ion-title style="color: white;">Lista de Peliculas</ion-title>
+    <ion-buttons slot="start" >
+        <ion-button (click)="onLogout()" slot="left" size="large">
+            <ion-icon name="log-out" style="color: white;"></ion-icon>
+          </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="primary" >
+      <ion-button (click)="irFavoritos()" slot="right" size="large" *ngIf="permiso<1">
+        <ion-icon name="star" style="color: white;"></ion-icon>
+      </ion-button>
+      <ion-button (click)="refrescarPagina()" slot="right" size="large" *ngIf="permiso>0">
+          <ion-icon name="refresh" style="color: white;"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item-sliding *ngFor="let pelicula of peliculas">
+      <ion-item lines="inset" button [routerLink]="['/peliculas',pelicula.id]" *ngIf="permiso>0">
+        <ion-img slot="start">
+          <img src="{{pelicula.imagen}}" width="100px"/>
+        </ion-img>
+        <ion-label>
+          {{pelicula.titulo}}
+        </ion-label>
+      </ion-item>
+
+      <ion-item lines="inset" button [routerLink]="['/peliculasusuario',pelicula.id]" *ngIf="permiso<1">
+        <ion-img slot="start">
+          <img src="{{pelicula.imagen}}" width="100px"/>
+        </ion-img>
+        <ion-label>
+          {{pelicula.titulo}}
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options side="end" >
+        <ion-item-option (click)="onRemove(pelicula.id)" color="danger" *ngIf="permiso>0">
+          <ion-icon name="trash" slot="end"></ion-icon>
+        </ion-item-option>
+        <!--ion-item-option (click)="onRemove(item)" color="primary">
+          <ion-icon name="star" slot="end"></ion-icon>
+        </ion-item-option-->
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/peliculas" routerDirection="forward" *ngIf="permiso>0">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

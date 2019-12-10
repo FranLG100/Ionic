@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../services/auth.service';
 import {User} from '../shared/user.class';
-import { SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS } from 'constants';
 
 @Component({
   selector: 'app-login',
@@ -17,12 +16,10 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  async onLogin(){
-    const user=await this.authSvc.onLogin(this.user);
-    if(user){
-      console.log("Usuario logeado correctamente");
-      this.router.navigateByUrl('/');
-    }
+  onLogin(){
+    this.authSvc.onLogin(this.user).then(res=>{
+      this.router.navigateByUrl('/menu');
+    }).catch(err=>alert('Datos incorrectos'));
   }
 
 }
